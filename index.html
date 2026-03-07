@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bodhivardhan Kasabe — Senior Frontend Engineer</title>
+<meta name="description" content="Senior Frontend Engineer with 6.5+ years building scalable Angular SPAs, Node.js APIs, and cross-platform mobile apps.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&family=Outfit:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg:#f7f4ef; --surface:#edeae3; --dark:#111110; --panel:#1a1917;
+  --gold:#c9973a; --gold2:#e8b44a; --teal:#2d6e6e; --teal2:#3d9090;
+  --rust:#9b3f28; --ink:#1e1d1b; --mid:#6b6760; --light:#a8a49d;
+  --rule:#d8d3ca; --white:#fdfcf9;
+}
+html { scroll-behavior: smooth; }
+body { background:var(--bg); color:var(--ink); font-family:'Outfit',sans-serif; font-size:14px; line-height:1.6; }
+a { color:inherit; text-decoration:none; }
+
+/* TOP BAR */
+.top-bar { background:var(--dark); padding:11px 48px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+.top-links { display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
+.tlink { font-family:'Fira Code',monospace; font-size:10px; letter-spacing:0.12em; color:#666; display:flex; align-items:center; gap:7px; transition:color 0.2s; }
+.tlink:hover { color:var(--gold2); }
+.tlink svg { width:13px; height:13px; flex-shrink:0; }
+.top-url { font-family:'Fira Code',monospace; font-size:9px; color:#333; letter-spacing:0.06em; }
+
+/* HERO */
+.hero { background:var(--panel); padding:60px 48px 52px; position:relative; overflow:hidden; }
+.hero::before { content:''; position:absolute; top:-100px; right:-100px; width:500px; height:500px; border-radius:50%; background:radial-gradient(circle,rgba(201,151,58,0.07) 0%,transparent 65%); pointer-events:none; }
+.hero::after { content:''; position:absolute; bottom:0; left:0; right:0; height:1px; background:linear-gradient(90deg,transparent,var(--gold),transparent); }
+.hero-inner { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr auto; gap:48px; align-items:end; }
+.hero-tag { font-family:'Fira Code',monospace; font-size:10px; letter-spacing:0.32em; text-transform:uppercase; color:var(--gold); margin-bottom:18px; display:flex; align-items:center; gap:10px; }
+.hero-tag::before { content:''; width:26px; height:1px; background:var(--gold); }
+.hero-name { font-family:'Fraunces',serif; font-size:clamp(46px,5.5vw,78px); font-weight:700; line-height:0.92; letter-spacing:-2px; color:var(--white); margin-bottom:22px; }
+.hero-name em { font-style:italic; font-weight:300; color:var(--gold2); }
+.hero-tagline { font-family:'Outfit',sans-serif; font-size:15px; font-weight:300; color:#888; max-width:520px; line-height:1.75; margin-bottom:32px; }
+.hero-tagline strong { color:var(--gold2); font-weight:500; }
+.hero-contacts { display:flex; flex-wrap:wrap; gap:9px; }
+.cpill { display:inline-flex; align-items:center; gap:7px; padding:7px 15px; border:1px solid #272523; border-radius:40px; font-family:'Fira Code',monospace; font-size:10px; color:#777; transition:all 0.2s; background:rgba(255,255,255,0.02); }
+.cpill:hover { border-color:var(--gold); color:var(--gold2); background:rgba(201,151,58,0.06); }
+.cpill svg { width:11px; height:11px; }
+.hero-stats { display:flex; flex-direction:column; gap:2px; align-items:flex-end; }
+.hstat { background:rgba(255,255,255,0.03); border:1px solid #222; border-radius:6px; padding:14px 22px; text-align:right; min-width:136px; }
+.hstat-n { font-family:'Fraunces',serif; font-size:34px; font-weight:600; color:var(--gold2); line-height:1; display:block; }
+.hstat-l { font-family:'Fira Code',monospace; font-size:8px; letter-spacing:0.18em; text-transform:uppercase; color:#444; margin-top:3px; display:block; }
+
+/* BODY */
+.body-wrap { max-width:1200px; margin:0 auto; padding:0 48px 80px; display:grid; grid-template-columns:1fr 296px; gap:56px; align-items:start; }
+
+/* SECTION HEAD */
+.sec { padding-top:60px; }
+.sec-head { display:flex; align-items:center; gap:14px; margin-bottom:36px; }
+.sec-num { font-family:'Fraunces',serif; font-size:12px; font-weight:300; font-style:italic; color:var(--gold); letter-spacing:0.08em; }
+.sec-title { font-family:'Outfit',sans-serif; font-size:17px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink); }
+.sec-line { flex:1; height:1px; background:var(--rule); }
+
+/* EXP CARDS */
+.exp-card { background:var(--white); border:1px solid var(--rule); border-radius:8px; padding:30px 30px 26px; margin-bottom:18px; position:relative; transition:box-shadow 0.25s,border-color 0.25s; }
+.exp-card:hover { box-shadow:0 8px 32px rgba(0,0,0,0.08); border-color:var(--gold); }
+.exp-card::before { content:''; position:absolute; top:0; left:0; width:3px; height:100%; background:var(--gold); border-radius:8px 0 0 8px; opacity:0; transition:opacity 0.25s; }
+.exp-card:hover::before { opacity:1; }
+.exp-top { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:16px; flex-wrap:wrap; }
+.exp-co { font-family:'Fraunces',serif; font-size:24px; font-weight:700; color:var(--ink); line-height:1; margin-bottom:4px; }
+.exp-role { font-family:'Fira Code',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--teal); font-weight:500; }
+.exp-period { font-family:'Fira Code',monospace; font-size:10px; letter-spacing:0.08em; color:var(--light); background:var(--surface); border:1px solid var(--rule); border-radius:20px; padding:5px 13px; white-space:nowrap; flex-shrink:0; }
+.exp-bullets { list-style:none; display:flex; flex-direction:column; gap:7px; margin-bottom:16px; }
+.exp-bullets li { font-size:13px; color:var(--mid); line-height:1.65; padding-left:18px; position:relative; }
+.exp-bullets li::before { content:'▸'; position:absolute; left:0; color:var(--gold); font-size:10px; top:2px; }
+.exp-bullets li strong { color:var(--ink); font-weight:600; }
+.tag-row { display:flex; flex-wrap:wrap; gap:5px; }
+.tag { font-family:'Fira Code',monospace; font-size:9px; letter-spacing:0.05em; padding:3px 9px; background:var(--surface); border:1px solid var(--rule); border-radius:3px; color:var(--mid); transition:all 0.15s; }
+.tag:hover { background:var(--dark); color:var(--gold2); border-color:var(--dark); }
+
+/* PROJECTS */
+.proj-featured { background:var(--dark); border-radius:10px; padding:34px; margin-bottom:18px; position:relative; overflow:hidden; border:1px solid #252422; }
+.proj-featured::before { content:'FEATURED PROJECT'; position:absolute; top:16px; right:16px; font-family:'Fira Code',monospace; font-size:8px; letter-spacing:0.28em; color:var(--gold); border:1px solid rgba(201,151,58,0.28); padding:3px 9px; border-radius:2px; }
+.proj-featured::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--gold),var(--teal2)); }
+.pf-dur { font-family:'Fira Code',monospace; font-size:9px; letter-spacing:0.22em; color:var(--gold); text-transform:uppercase; margin-bottom:9px; }
+.pf-name { font-family:'Fraunces',serif; font-size:38px; font-weight:700; color:var(--white); line-height:1; margin-bottom:4px; }
+.pf-client { font-family:'Fira Code',monospace; font-size:9px; letter-spacing:0.12em; color:var(--teal2); text-transform:uppercase; margin-bottom:16px; }
+.pf-desc { font-size:13px; color:#777; line-height:1.75; margin-bottom:16px; }
+.pf-desc strong { color:var(--gold2); font-weight:500; }
+.pf-tags { display:flex; flex-wrap:wrap; gap:5px; }
+.pf-tag { font-family:'Fira Code',monospace; font-size:8px; padding:3px 8px; background:rgba(255,255,255,0.04); border:1px solid #2d2b28; border-radius:3px; color:#666; }
+.proj-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.proj-card { background:var(--white); border:1px solid var(--rule); border-radius:8px; padding:22px; transition:all 0.2s; }
+.proj-card:hover { border-color:var(--teal2); box-shadow:0 6px 20px rgba(0,0,0,0.07); transform:translateY(-2px); }
+.pc-dur { font-family:'Fira Code',monospace; font-size:8px; letter-spacing:0.18em; color:var(--gold); text-transform:uppercase; margin-bottom:7px; }
+.pc-name { font-family:'Fraunces',serif; font-size:21px; font-weight:700; color:var(--ink); line-height:1; margin-bottom:3px; }
+.pc-client { font-family:'Fira Code',monospace; font-size:8px; letter-spacing:0.1em; color:var(--teal); text-transform:uppercase; margin-bottom:10px; }
+.pc-desc { font-size:12px; color:var(--mid); line-height:1.65; }
+
+/* SIDEBAR */
+.sidebar { padding-top:60px; position:sticky; top:20px; display:flex; flex-direction:column; gap:20px; }
+.sb-card { background:var(--white); border:1px solid var(--rule); border-radius:8px; padding:22px; }
+.sb-title { font-family:'Fira Code',monospace; font-size:8px; letter-spacing:0.32em; text-transform:uppercase; color:var(--gold); margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+.sb-title::after { content:''; flex:1; height:1px; background:var(--rule); }
+.sg { margin-bottom:16px; }
+.sg:last-child { margin-bottom:0; }
+.sg-label { font-family:'Fira Code',monospace; font-size:8px; letter-spacing:0.18em; text-transform:uppercase; color:var(--teal); margin-bottom:7px; }
+.sg-pills { display:flex; flex-wrap:wrap; gap:4px; }
+.sg-pill { font-family:'Fira Code',monospace; font-size:8px; padding:3px 7px; background:var(--surface); border:1px solid var(--rule); border-radius:3px; color:var(--mid); transition:all 0.15s; }
+.sg-pill:hover { background:var(--dark); color:var(--gold2); border-color:var(--dark); }
+.edu-item { border-left:3px solid var(--gold); padding-left:14px; }
+.edu-deg { font-family:'Fraunces',serif; font-size:17px; font-weight:600; color:var(--ink); line-height:1.2; margin-bottom:4px; }
+.edu-school { font-family:'Fira Code',monospace; font-size:9px; letter-spacing:0.1em; color:var(--teal); text-transform:uppercase; }
+.edu-year { font-family:'Fira Code',monospace; font-size:9px; color:var(--light); margin-top:3px; }
+
+/* CERT */
+.cert-card { background:var(--dark); border:1px solid #252422; border-radius:8px; padding:20px; text-align:center; transition:all 0.2s; display:block; }
+.cert-card:hover { border-color:var(--gold); box-shadow:0 0 24px rgba(201,151,58,0.1); }
+.cert-icon { font-size:30px; display:block; margin-bottom:9px; }
+.cert-name { font-family:'Fraunces',serif; font-size:14px; font-weight:600; color:var(--white); line-height:1.3; margin-bottom:5px; }
+.cert-issuer { font-family:'Fira Code',monospace; font-size:8px; letter-spacing:0.14em; color:var(--gold); text-transform:uppercase; margin-bottom:11px; }
+.cert-verify { font-family:'Fira Code',monospace; font-size:8px; letter-spacing:0.08em; color:#444; display:inline-flex; align-items:center; gap:5px; padding:5px 12px; border:1px solid #2a2927; border-radius:20px; transition:all 0.2s; }
+.cert-card:hover .cert-verify { border-color:var(--gold); color:var(--gold2); }
+
+/* LINKEDIN CARD */
+.li-card { background:var(--dark); border:1px solid #252422; border-radius:8px; padding:20px; text-align:center; display:block; transition:all 0.2s; }
+.li-card:hover { border-color:#0A66C2; box-shadow:0 0 20px rgba(10,102,194,0.12); }
+
+/* FOOTER */
+footer { background:var(--dark); padding:24px 48px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; border-top:1px solid #1a1917; }
+.footer-name { font-family:'Fraunces',serif; font-size:17px; font-weight:600; color:var(--white); }
+.footer-links { display:flex; gap:18px; flex-wrap:wrap; }
+.footer-link { font-family:'Fira Code',monospace; font-size:9px; letter-spacing:0.1em; color:#444; transition:color 0.2s; }
+.footer-link:hover { color:var(--gold2); }
+
+/* RESPONSIVE */
+@media (max-width:960px) {
+  .hero-inner { grid-template-columns:1fr; }
+  .hero-stats { flex-direction:row; flex-wrap:wrap; align-items:flex-start; }
+  .body-wrap { grid-template-columns:1fr; padding:0 22px 60px; }
+  .sidebar { position:static; }
+  .proj-grid { grid-template-columns:1fr; }
+  .top-bar, .hero, footer { padding-left:22px; padding-right:22px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="top-links">
+    <a href="https://www.linkedin.com/in/bodhivardhan-kasabe" target="_blank" class="tlink">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      linkedin.com/in/bodhivardhan-kasabe
+    </a>
+    <a href="https://bodhivardhan.github.io/bodhivardhan-kasabe/" target="_blank" class="tlink">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+      bodhivardhan.github.io/bodhivardhan-kasabe
+    </a>
+    <a href="https://www.credly.com/badges/56c1124b-5df6-4a8f-ba6d-d4e7aea2ee95" target="_blank" class="tlink">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      AWS Certified · Verify on Credly
+    </a>
+  </div>
+  <div class="top-url">bodhivardhan.github.io/bodhivardhan-kasabe</div>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">Senior Software Engineer · 6.5 Years</div>
+      <h1 class="hero-name">Bodhi<em>vardhan</em><br>Kasabe</h1>
+      <p class="hero-tagline">
+        Full-stack engineer specialising in <strong>Angular SPAs</strong>, <strong>Node.js APIs</strong>, and <strong>Ionic mobile apps</strong>. From global banking security at HSBC to first-of-its-kind EdTech platforms — I build things that scale, perform, and last.
+      </p>
+      <div class="hero-contacts">
+        <a href="tel:+917276162543" class="cpill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h6l2 5-2.5 1.5a11 11 0 005 5L14 12l5 2v6a1 1 0 01-1 1C6 21 1 9 2 3z"/></svg>
+          +91 7276162543
+        </a>
+        <div class="cpill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          Solapur, India
+        </div>
+        <a href="https://www.linkedin.com/in/bodhivardhan-kasabe" target="_blank" class="cpill">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://bodhivardhan.github.io/bodhivardhan-kasabe/" target="_blank" class="cpill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+          Portfolio Site
+        </a>
+        <a href="https://www.credly.com/badges/56c1124b-5df6-4a8f-ba6d-d4e7aea2ee95" target="_blank" class="cpill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          AWS Certified
+        </a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><span class="hstat-n">6.5</span><span class="hstat-l">Years Exp.</span></div>
+      <div class="hstat"><span class="hstat-n">100K+</span><span class="hstat-l">Users Served</span></div>
+      <div class="hstat"><span class="hstat-n">30%</span><span class="hstat-l">Less Complaints</span></div>
+      <div class="hstat"><span class="hstat-n">15%</span><span class="hstat-l">Perf Gain</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- BODY -->
+<div class="body-wrap">
+  <div>
+
+    <!-- EXPERIENCE -->
+    <section class="sec">
+      <div class="sec-head">
+        <span class="sec-num">01 /</span>
+        <span class="sec-title">Experience</span>
+        <div class="sec-line"></div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-top">
+          <div><div class="exp-co">HSBC</div><div class="exp-role">Senior Software Engineer</div></div>
+          <div class="exp-period">07 · 2023 — Present</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Achieved <strong>15% system performance improvement</strong> via Angular optimisations and WCAG accessibility compliance</li>
+          <li>Spearheaded <strong>Mobile Approve</strong> — QR code login, deep linking, proximity checks &amp; ZPK encryption for secure banking</li>
+          <li>Resolved <strong>50+ production issues</strong> with Splunk &amp; AppDynamics, reducing customer complaints by <strong>30%</strong></li>
+          <li>Deployed on <strong>AWS</strong> (EC2, S3, API Gateway, CloudFront) via CI/CD pipelines with zero downtime</li>
+          <li>Implemented <strong>JWT &amp; OAuth2</strong> authentication integrating Transmit middleware and backend APIs</li>
+          <li>Led and mentored a <strong>4-member frontend team</strong> across code reviews and sprint planning</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag">Angular 16</span><span class="tag">TypeScript</span><span class="tag">NgRx</span>
+          <span class="tag">Node.js</span><span class="tag">AWS</span><span class="tag">Splunk</span>
+          <span class="tag">AppDynamics</span><span class="tag">OAuth2 / JWT</span>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-top">
+          <div><div class="exp-co">HCLTech</div><div class="exp-role">Consultant</div></div>
+          <div class="exp-period">06 · 2021 — 07 · 2023</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Migrated large-scale enterprise apps to <strong>Angular 16 + NgRx</strong>, boosting scalability &amp; maintainability</li>
+          <li>Designed and implemented <strong>Micro Frontend Architecture</strong> enabling modular deployments and faster delivery</li>
+          <li>Developed secure SPAs with REST APIs &amp; Auth Guards for role-based flows</li>
+          <li>Automated builds with <strong>Jenkins &amp; GitLab CI/CD</strong>, improving release cycle by <strong>25%</strong></li>
+          <li>Delivered pixel-perfect UI using Angular Material, Bootstrap &amp; SCSS for <strong>100K+ users</strong></li>
+          <li>Built MEAN stack applications and hybrid apps using <strong>Ionic 3</strong></li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag">Angular</span><span class="tag">NgRx</span><span class="tag">Node.js</span>
+          <span class="tag">MongoDB</span><span class="tag">PostgreSQL</span><span class="tag">Jenkins</span>
+          <span class="tag">GitLab CI/CD</span><span class="tag">Ionic</span>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-top">
+          <div><div class="exp-co">Birdvision</div><div class="exp-role">MEAN Stack Developer</div></div>
+          <div class="exp-period">12 · 2020 — 06 · 2021</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Developed <strong>Equibiz</strong> B2B trading platform using Angular, Node.js, and MongoDB</li>
+          <li>Implemented MEAN stack architecture with Angular frontend and Node.js backend</li>
+          <li>Ensured seamless MongoDB integration and maintained application stability</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag">Angular</span><span class="tag">Node.js</span><span class="tag">MongoDB</span><span class="tag">MEAN Stack</span>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-top">
+          <div><div class="exp-co">MindNerves</div><div class="exp-role">Software Engineer</div></div>
+          <div class="exp-period">04 · 2019 — 12 · 2020</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Led full-stack development of <strong>Bablr</strong> — a first-of-its-kind global EdTech platform for early childhood education (0–3 years) using Angular, Node.js, and Ionic</li>
+          <li>Engineered <strong>cross-platform mobile app</strong> (iOS &amp; Android) with Ionic/Cordova delivering a seamless caregiver &amp; educator experience</li>
+          <li>Built RESTful Node.js/Express APIs powering Bablr's <strong>proprietary adaptive algorithm</strong> for personalised child activity feeds and multi-caregiver collaboration</li>
+          <li>Designed enrollment, curriculum delivery, and <strong>cohort-based learning journey</strong> modules with JWT-secured role-based access</li>
+          <li>Conducted code reviews and applied agile methodologies across cross-functional teams</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag">Angular</span><span class="tag">Ionic</span><span class="tag">Node.js</span>
+          <span class="tag">Express.js</span><span class="tag">MongoDB</span><span class="tag">REST APIs</span>
+          <span class="tag">JWT</span><span class="tag">TypeScript</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="sec">
+      <div class="sec-head">
+        <span class="sec-num">02 /</span>
+        <span class="sec-title">Projects</span>
+        <div class="sec-line"></div>
+      </div>
+
+      <div class="proj-featured">
+        <div class="pf-dur">12 Months · EdTech</div>
+        <div class="pf-name">Bablr</div>
+        <div class="pf-client">Early Learning Platform · Ages 0–3 · Global First-of-its-Kind</div>
+        <p class="pf-desc">
+          A <strong>first-of-its-kind global digital platform</strong> for early childhood education serving children from birth to age 3. Built a full-stack cross-platform solution using <strong>Angular, Node.js (Express), and Ionic</strong>, enabling real-time collaboration between parents, educators, and childcare professionals.<br><br>
+          Developed the integration layer for Bablr's <strong>Proprietary Adaptive Algorithm</strong> — personalising daily activity feeds per child based on age milestones, developmental goals, and multi-caregiver feedback. Built a <strong>hybrid mobile app</strong> (iOS &amp; Android) with child-friendly UI via Figma. Backend services managed enrollment, scheduling, push notifications, and caregiver role access via JWT-secured APIs.
+        </p>
+        <div class="pf-tags">
+          <span class="pf-tag">Angular</span><span class="pf-tag">Ionic (Cordova)</span><span class="pf-tag">Node.js</span>
+          <span class="pf-tag">Express.js</span><span class="pf-tag">MongoDB</span><span class="pf-tag">REST APIs</span>
+          <span class="pf-tag">JWT</span><span class="pf-tag">TypeScript</span><span class="pf-tag">SCSS</span>
+          <span class="pf-tag">Angular Material</span><span class="pf-tag">iOS</span><span class="pf-tag">Android</span>
+        </div>
+      </div>
+
+      <div class="proj-grid">
+        <div class="proj-card">
+          <div class="pc-dur">24 Months</div>
+          <div class="pc-name">Mobile Approve</div>
+          <div class="pc-client">Banking · HSBC</div>
+          <p class="pc-desc">Authentication features — QR code login, deep linking, push-based approvals &amp; ZPK encryption. Integrated Transmit middleware &amp; Java backend.</p>
+        </div>
+        <div class="proj-card">
+          <div class="pc-dur">6 Months</div>
+          <div class="pc-name">KPATH</div>
+          <div class="pc-client">Healthcare · Kaiser Permanente</div>
+          <p class="pc-desc">Appointment &amp; prescription management system reducing call handling time by 25%, streamlining patient workflows.</p>
+        </div>
+        <div class="proj-card">
+          <div class="pc-dur">12 Months</div>
+          <div class="pc-name">Activation</div>
+          <div class="pc-client">Telecom · T-Mobile US</div>
+          <p class="pc-desc">Angular micro-frontend e-commerce platform for device purchase and plan selection with modular deployments.</p>
+        </div>
+        <div class="proj-card">
+          <div class="pc-dur">6 Months</div>
+          <div class="pc-name">Equibiz</div>
+          <div class="pc-client">E-Commerce · B2B</div>
+          <p class="pc-desc">B2B trading platform connecting buyers &amp; sellers across India, built with MEAN stack for high-volume transactions.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <!-- AWS Cert -->
+    <a href="https://www.credly.com/badges/56c1124b-5df6-4a8f-ba6d-d4e7aea2ee95" target="_blank" class="cert-card">
+      <span class="cert-icon">☁️</span>
+      <div class="cert-name">AWS Certified Cloud Practitioner</div>
+      <div class="cert-issuer">Amazon Web Services</div>
+      <div class="cert-verify">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+        Verify on Credly ↗
+      </div>
+    </a>
+
+    <!-- Skills -->
+    <div class="sb-card">
+      <div class="sb-title">Skills</div>
+      <div class="sg"><div class="sg-label">Frontend</div><div class="sg-pills"><span class="sg-pill">Angular 2–16</span><span class="sg-pill">TypeScript</span><span class="sg-pill">RxJS</span><span class="sg-pill">NgRx</span><span class="sg-pill">JavaScript</span><span class="sg-pill">HTML5</span><span class="sg-pill">SCSS</span><span class="sg-pill">Bootstrap</span><span class="sg-pill">Ang. Material</span></div></div>
+      <div class="sg"><div class="sg-label">Backend</div><div class="sg-pills"><span class="sg-pill">Node.js</span><span class="sg-pill">Express.js</span><span class="sg-pill">REST APIs</span><span class="sg-pill">Microservices</span><span class="sg-pill">MongoDB</span><span class="sg-pill">PostgreSQL</span></div></div>
+      <div class="sg"><div class="sg-label">Mobile</div><div class="sg-pills"><span class="sg-pill">Ionic</span><span class="sg-pill">Cordova</span><span class="sg-pill">iOS / Android</span></div></div>
+      <div class="sg"><div class="sg-label">Cloud & DevOps</div><div class="sg-pills"><span class="sg-pill">AWS EC2</span><span class="sg-pill">AWS S3</span><span class="sg-pill">CloudFront</span><span class="sg-pill">Jenkins</span><span class="sg-pill">GitLab CI/CD</span></div></div>
+      <div class="sg"><div class="sg-label">Security</div><div class="sg-pills"><span class="sg-pill">OAuth2</span><span class="sg-pill">JWT</span><span class="sg-pill">ZPK Encryption</span><span class="sg-pill">Auth Guards</span><span class="sg-pill">WCAG</span></div></div>
+      <div class="sg"><div class="sg-label">Testing</div><div class="sg-pills"><span class="sg-pill">Jasmine</span><span class="sg-pill">Karma</span><span class="sg-pill">Jest</span><span class="sg-pill">Cypress</span><span class="sg-pill">SonarQube</span></div></div>
+      <div class="sg"><div class="sg-label">Tools</div><div class="sg-pills"><span class="sg-pill">Figma</span><span class="sg-pill">Jira</span><span class="sg-pill">Splunk</span><span class="sg-pill">AppDynamics</span><span class="sg-pill">Agile/Scrum</span><span class="sg-pill">AEM</span></div></div>
+    </div>
+
+    <!-- Education -->
+    <div class="sb-card">
+      <div class="sb-title">Education</div>
+      <div class="edu-item">
+        <div class="edu-deg">MCA — Computers</div>
+        <div class="edu-school">Pune University</div>
+        <div class="edu-year">Class of 2015</div>
+      </div>
+    </div>
+
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/in/bodhivardhan-kasabe" target="_blank" class="li-card">
+      <div style="font-family:'Fira Code',monospace;font-size:8px;letter-spacing:0.28em;color:var(--gold);text-transform:uppercase;margin-bottom:10px;">Connect on LinkedIn</div>
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="#0A66C2" style="display:block;margin:0 auto 9px;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      <div style="font-family:'Fraunces',serif;font-size:14px;font-weight:600;color:var(--white);margin-bottom:3px;">Bodhivardhan Kasabe</div>
+      <div style="font-family:'Fira Code',monospace;font-size:8px;color:#444;letter-spacing:0.08em;">linkedin.com/in/bodhivardhan-kasabe ↗</div>
+    </a>
+
+  </aside>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Bodhivardhan Kasabe</div>
+  <div class="footer-links">
+    <a href="https://bodhivardhan.github.io/bodhivardhan-kasabe/" target="_blank" class="footer-link">bodhivardhan.github.io/bodhivardhan-kasabe</a>
+    <a href="https://www.linkedin.com/in/bodhivardhan-kasabe" target="_blank" class="footer-link">LinkedIn</a>
+    <a href="https://www.credly.com/badges/56c1124b-5df6-4a8f-ba6d-d4e7aea2ee95" target="_blank" class="footer-link">AWS Certified</a>
+    <span class="footer-link">© 2025 · Solapur, India</span>
+  </div>
+</footer>
+
+</body>
+</html>
